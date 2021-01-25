@@ -30,13 +30,44 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain how to build stateful class components.
 
+Answer:
+   Stateful class component can be built by using constructor() method within React.Component. Within the cunstructor() method we will initially inherit class properties with super() function and then declare our state object with this.state
+
 2. Describe the different phases of the component lifecycle.
+  Component lifecycle has 3 phases. Mounting, Updating and Unmounting
+  
+ Answer:
+  a) Mounting phase - starts with constructor() method if any, and then calls the render() method to render initial DOM nodes  and ends with componentDidMount() method if any.
+
+  b) Updating phase - this is where new props get passed to the component and if there are any changes in state value vis setState(), component calls render() function again, and state ends with componentDidUpdate() method
+
+  c) Unmounting phase - this stage is where we can componentWillUnmount method and cleanup our component which removes the component from the screen
 
 3. Demonstrate an understanding of class component lifecycle methods.
 
+Answer:
+  a) render() - this is a must have method that renders the JSX objects into React Virtual DOM. Without it class component will not work. It can be initiated both in mounting and updating phases of the component lifecycle
+
+  b) constructor() - this method is needed to declare a state as well as bind setState() functionality to the state. This method is only called in Mounting phase of the component
+
+  c) componentDidMount() - this method is called immediately once the render completes in the Mounting phase with all necessary DOM nodes and component is mounted in the screen.
+
+  d) componentDidUpdate() - this state is called at the end of Updating phase and is useful to make network calls in order to compare differences in props
+
+  e) componentWillUnmount() - this state is called in Unmounting phase and is usually used to do any cleanups as part of unmounting process
+
 4. Define stateful logic.
 
+Answer:
+  Stateful logic is when a component has a function/s (toggle, changeHandler and etc.) that interact with state,, and hence update state and cause re-rendering of the component
+
 5. Describe how to test a React component with React Testing Library.
+
+Answer:
+  a) Create a component's test with following pattern "Component.test.js"
+  b) Import react testing library and Component into the test file
+  c) Determine testcases that will be written
+  d) Arrange (render the component), Act (get required nodes, actions and etc), Assert (writed expected results from the actions performed )
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
@@ -55,9 +86,14 @@ _Please follow the setup instructions closely so that you can get everything up 
 **Basic set up**
 
 - [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
 - [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [ ] [OPTIONAL] Create a new branch: git checkout -b `<firstName-lastName>`. If you choose to do this, you will need to merge your working branch into the master branch and push your final code to master in order for the submission to work with CodeGrade.
+
+\_Note: Ignore the `mocks` directory. That is in place for the CodeGrade tests
+
+**Setting up the CodeGrade webhook**
+
+Go [here](./CodeGrade-webhook.md) to setup the CodeGrade webhook before you begin.
 
 **Starting the server**
 
@@ -79,7 +115,7 @@ _Please follow the setup instructions closely so that you can get everything up 
 **Commit and Push OFTEN!**
 
 - [ ] Implement the project on this Branch, **committing progress & changes often.**
-- [ ] Push commits: `git push origin <firstName-lastName>`.
+- [ ] Push commits: `git push origin master`, or, if working on your own branch: git push origin <firstName-lastName>`.
 
 ### Task 2: Project Requirements
 
@@ -133,8 +169,4 @@ test("displays plants in cart", () => {
 
 ## Submission format
 
-Follow these steps for completing your project.
-
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo). **Please don't merge your own pull request**
-- [ ] Add your team lead as a reviewer on the pull-request
-- [ ] Your team lead will count the project as complete after receiving your pull-request
+To submit, simply push your latest commit to the master branch and the CodeGrade webhook you setup will run automatically.
