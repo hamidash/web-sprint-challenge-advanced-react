@@ -8,9 +8,18 @@ import CheckoutForm from "./components/CheckoutForm";
 
 import "./App.css";
 
+
+
 function App() {
   // array of plants that have been added to the cart
   const [cart, setCart] = useState([]);
+
+  useEffect(()=>{
+    axios.get('http://localhost:3333/plants')
+      .then(res =>{
+        console.log(res);
+      })
+  });
 
   // add a plant to the cart
   const addToCart = (plant) => {
@@ -28,6 +37,7 @@ function App() {
         <nav className="container">
           <h1>
             React Plants <span role="img">🌿</span>
+            Test
           </h1>
           <ul className="steps">
             <li>
